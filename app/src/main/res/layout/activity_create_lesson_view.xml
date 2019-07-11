@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.createLesson.CreateLessonView">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/name_lesson_linearlayout"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Lesson name : "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/create_name_lesson_edittext"
+                android:text="اللمبي 8 جيجا "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/Framlayout_quiz_question"
+            android:layout_below="@+id/name_lesson_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/create_lesson_recycler_view"
+
+                android:layout_width="match_parent"
+                android:layout_height="522dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:paddingTop="122dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/move_between_item_relative_layout"
+                android:layout_below="@+id/create_lesson_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/create_lesson_next_imageview"
+                    android:text="next"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="112dp"
+                    android:layout_height="112dp" />
+                <ImageView
+                    android:id="@+id/create_lesson_back_imageview"
+                    android:text="back"
+                    android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+                    android:layout_width="112dp"
+                    android:layout_height="112dp" />
+
+            </RelativeLayout>
+        </FrameLayout>
+        <LinearLayout
+            android:id="@+id/linearlayout_teacher_question"
+            android:layout_below="@+id/Framlayout_quiz_question"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/create_remover_question_image_view"
+                android:src="@drawable/ic_delete_black_24dp"
+                android:layout_marginRight="32dp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/create_add_question_image_view"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/ic_add_black_24dp"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@+id/linearlayout_teacher_question"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/create_lesson_create_button"
+                android:text="create lesson"
+                android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RoomDatabase</string>
+    <string name="intent_recycler_item_name">keyNameItemRecycler</string>
+    <string name="intent_recycler_item_age">keyAgeItemRecycler</string>
+    <string name="intent_recycler_item_year">keyYearItemRecycler</string>
+    <string name="intent_recycler_item_image">keyIntentImageForItem</string>
+    <string name="intent_action_update_student">update</string>
+    <string name="intent_action_add_student">add</string>
+    <string name="intent_student_update_id">numberIdStudent</string>
+    <string name="user_is_student_value">0</string>
+    <string name="user_is_teacher_value">1</string>
+    <string name="user_id_key">userId</string>
+    <string name="create_lesson_teacher_id_key">teacherIdcreateLesson</string>
+    <string name="intent_quiz_lesson_id_key">lessonIdStudent</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.detail.DetailView">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/create_student_fab"
+            android:layout_margin="16dp"
+            android:backgroundTint="#FF85B3"
+            app:fabSize="normal"
+            android:scaleType="centerCrop"
+            app:maxImageSize="40dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_done_black_24dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/upload_photo_student_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:src="@drawable/ic_cloud_upload_black_24dp" />
+
+            <EditText
+                android:id="@+id/student_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your name "
+                android:paddingBottom="23dp" />
+
+            <EditText
+                android:id="@+id/student_age_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your age "
+                android:paddingBottom="23dp" />
+
+            <EditText
+                android:id="@+id/student_year_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your userName "
+                android:paddingBottom="23dp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

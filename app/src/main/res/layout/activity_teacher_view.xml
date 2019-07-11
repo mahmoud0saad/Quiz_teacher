@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.teacherMain.TeacherMainView">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/teacher_lesson_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/container_teacher_control"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/teacher_add_lesson_fab_button"
+            android:layout_width="222dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_black_24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="24dp"
+            app:backgroundTint="#1C6F63"
+            app:maxImageSize="44dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/container_student_control"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <Button
+           android:layout_margin="24dp"
+           android:layout_alignParentBottom="true"
+           android:layout_centerHorizontal="true"
+           android:text="start Quiz"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

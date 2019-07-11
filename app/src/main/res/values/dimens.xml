@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_width_edit_text">190dp</dimen>
+    <dimen name="login_width_card_view">322dp</dimen>
+    <dimen name="login_height_card_view">422dp</dimen>
+    <dimen name="login_padding_bottom_buttons">100dp</dimen>
+    <dimen name="register_parent_margin">22dp</dimen>
+    <dimen name="register_width_edit_text">223dp</dimen>
+    <dimen name="register_padding_top">40dp</dimen>
+</resources>
