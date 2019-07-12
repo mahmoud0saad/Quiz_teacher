@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -111,10 +112,23 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
             }else {
                 mQuestionImageView.setVisibility(ImageView.GONE);
             }
+            if (question.getChooserThird()==null||question.getChooserThird().isEmpty()) {
+                mAnswerQ3RadioButton.setVisibility(Button.GONE);
+            }
+            if (question.getChooserFour()==null||question.getChooserFour().isEmpty()) {
+                mAnswerQ4RadioButton.setVisibility(Button.GONE);
+            }
+
             mQuestionTextView.setText(question.getTheQuestion());
             mAnswerQ1RadioButton.setText(question.getChooserFirst());
             mAnswerQ2RadioButton.setText(question.getChooserSecond());
+
             mAnswerQ3RadioButton.setText(question.getChooserThird());
+
+
+            mAnswerQ4RadioButton.setText(question.getChooserFour());
+
+
             mAnswerQ4RadioButton.setText(question.getChooserFour());
             mCorrectResult= Integer.valueOf(question.getTheAnswer());
 

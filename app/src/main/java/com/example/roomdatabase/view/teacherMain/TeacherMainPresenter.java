@@ -6,6 +6,7 @@ import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.example.roomdatabase.R;
 import com.example.roomdatabase.model.AppExecutors;
@@ -29,11 +30,12 @@ public class TeacherMainPresenter  implements TeacherMainPresenterMvp{
     }
 
     @Override
-    public void getLessonTeacher(int userId) {
+    public void getLessonTeacher(final int userId) {
         LiveData<List<Lesson>> lessonLive = mDatabaseDao.getAllLessonForTeacher(userId);
         lessonLive.observe((LifecycleOwner) mContext, new Observer<List<Lesson>>() {
             @Override
             public void onChanged(@Nullable List<Lesson> lessons) {
+                Log.d("mano", "onChanged: all lesson for teacher is "+lessons.size()+"  user id is "+userId);
                 mTeacherView.setAllLesson(lessons);
             }
         });

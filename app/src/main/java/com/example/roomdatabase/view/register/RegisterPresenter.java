@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.roomdatabase.R;
@@ -14,6 +16,7 @@ import com.example.roomdatabase.model.AppExecutors;
 import com.example.roomdatabase.model.Manager;
 import com.example.roomdatabase.model.database.StudentDao;
 import com.example.roomdatabase.model.database.Users;
+import com.example.roomdatabase.model.preference.AppPreference;
 import com.example.roomdatabase.view.login.LoginViewMvp;
 import com.example.roomdatabase.view.main.MainView;
 import com.example.roomdatabase.view.studentMain.StudentMainView;
@@ -45,15 +48,23 @@ public class RegisterPresenter implements RegisterPresenterMvp {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
-                mDatabaseDao.insertStudent(user);
-                Intent intent;
-                if (user.getStateUser().equals(mContext.getString(R.string.user_is_student_value))){
-                    intent= new Intent(mContext, StudentMainView.class);
-                }else {
-                    intent= new Intent(mContext, TeacherMainView.class);
-                }
-                intent.putExtra(mContext.getString(R.string.user_id_key),user.getId());
-                mContext.startActivity(intent);
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        int userId= (int) mDatabaseDao.insertStudent(user);
+                        Intent intent;
+                        if (user.getStateUser().equals(mContext.getString(R.string.user_is_student_value))){
+                            intent= new Intent(mContext, StudentMainView.class);
+                        }else {
+                            intent= new Intent(mContext, TeacherMainView.class);
+                        }
+                        intent.putExtra(mContext.getString(R.string.user_id_key),userId);
+                        AppPreference appPreference=new AppPreference(mContext);
+                        appPreference.setUserId(userId);
+                        mContext.startActivity(intent);
+                    }
+                });
+
 
             }
         });

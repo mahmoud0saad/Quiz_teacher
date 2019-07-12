@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.createLesson.CreateLessonView"></activity>
+        <activity android:name=".view.LessonResults.LessonResultsView"></activity>
+        <activity android:name=".view.createLesson.CreateLessonView" />
         <activity android:name=".view.quizquestion.QuizQuestionView" />
         <activity android:name=".view.studentMain.StudentMainView" />
-        <activity android:name=".view.teacherMain.TeacherMainView"
-            android:launchMode="singleTop"
-            />
+        <activity
+            android:name=".view.teacherMain.TeacherMainView"
+            android:launchMode="singleTop" />
         <activity android:name=".view.register.RegisterView" />
         <activity android:name=".view.login.LoginView">
             <intent-filter>
@@ -28,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.detail.DetailView" />
-        <activity android:name=".view.main.MainView"></activity>
+        <activity android:name=".view.main.MainView" />
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.roomdatabase.R;
 import com.example.roomdatabase.model.database.Lesson;
+import com.example.roomdatabase.view.LessonResults.LessonResultsView;
 import com.example.roomdatabase.view.quizquestion.QuizQuestionView;
 
 import java.util.List;
@@ -62,14 +63,21 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonView
         public void onClick(View v) {
             //get result for all student it solve it lesson
             int lessonId=(int)mTextView.getTag();
+            String lessonName= (String) mTextView.getText();
             Log.d("mano", "onClick: "+lessonId);
 
-
-                //student
-                Intent intent=new Intent(mContext, QuizQuestionView.class);
-                intent.putExtra(mContext.getString(R.string.intent_quiz_lesson_id_key),String.valueOf(lessonId));
+            if (isTeacher) {
+                Intent intent = new Intent(mContext, LessonResultsView.class);
+                intent.putExtra(mContext.getString(R.string.intent_quiz_lesson_id_key), String.valueOf(lessonId));
+                intent.putExtra(mContext.getString(R.string.intent_quiz_lesson_name_key), lessonName);
                 mContext.startActivity(intent);
-
+            }else {
+                //student
+                Intent intent = new Intent(mContext, QuizQuestionView.class);
+                intent.putExtra(mContext.getString(R.string.intent_quiz_lesson_id_key), String.valueOf(lessonId));
+                intent.putExtra(mContext.getString(R.string.intent_quiz_lesson_name_key), lessonName);
+                mContext.startActivity(intent);
+            }
 
         }
     }

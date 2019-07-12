@@ -58,7 +58,6 @@ public class LessonQuestionAdapter extends RecyclerView.Adapter<LessonQuestionAd
 
         private ImageView mQuestionImageView;
         private EditText mQuestionEditText,mAnswerQ1EditText,mAnswerQ2EditText,mAnswerQ3EditText,mAnswerQ4EditText,mCorrectAnswerEditText;
-        private Bitmap mImgaeBitmap=null;
         int position;
         public LessonQuestionViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,7 +68,6 @@ public class LessonQuestionAdapter extends RecyclerView.Adapter<LessonQuestionAd
             mAnswerQ3EditText=itemView.findViewById(R.id.teachser_answer_q3_edit_text);
             mAnswerQ4EditText=itemView.findViewById(R.id.teachser_answer_q4_edit_text);
             mCorrectAnswerEditText=itemView.findViewById(R.id.teacher_correct_answer_edit_text);
-
 
             mQuestionImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -189,28 +187,21 @@ public class LessonQuestionAdapter extends RecyclerView.Adapter<LessonQuestionAd
 
         }
         public void setImageBitmap(Bitmap imageBitmap){
-            mImgaeBitmap=imageBitmap;
+
             mQuestionImageView.setImageBitmap(imageBitmap);
             mQuestionsList.get(position).setQuestionPhotoBitmap(imageBitmap);
-        }
-        Questions getQuestion(){
-
-            String questionName=mQuestionEditText.getText().toString();
-            String answerQ1=mAnswerQ1EditText.getText().toString();
-            String answerQ2=mAnswerQ2EditText.getText().toString();
-            String answerQ3=mAnswerQ3EditText.getText().toString();
-            String answerQ4=mAnswerQ4EditText.getText().toString();
-            int correctAnswerId= Integer.valueOf(mCorrectAnswerEditText.getText().toString());
-
-            Questions questions=new Questions(mTeacherId,questionName,answerQ1,answerQ2,answerQ3,answerQ4,String.valueOf(correctAnswerId),mImgaeBitmap);
-            return questions;
 
         }
+
 
         void onBind(Questions questions){
             mQuestionEditText.setText(questions.getTheQuestion());
             if (questions.getQuestionPhotoBitmap()!=null) {
+                Log.d("mano", "onBind: is have photo true");
                 mQuestionImageView.setImageBitmap(questions.getQuestionPhotoBitmap());
+            }else {
+                Log.d("mano", "onBind: is have photo false");
+                mQuestionImageView.setImageResource(R.drawable.ic_insert_photo_black_24dp);
             }
             mAnswerQ1EditText.setText(questions.getChooserFirst());
             mAnswerQ2EditText.setText(questions.getChooserSecond());

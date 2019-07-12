@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_margin="24dp"
+        android:id="@+id/quiz_question_name_text_view"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:hint="enter Questino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/quiz_image_question_image_view"
+            android:layout_below="@+id/quiz_question_name_text_view"
             android:layout_centerHorizontal="true"
             android:src="@drawable/ic_insert_photo_black_24dp"
             android:layout_width="222dp"
             android:layout_height="222dp" />
-        <TextView
-            android:id="@+id/quiz_question_name_text_view"
-            android:layout_below="@+id/quiz_image_question_image_view"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:hint="enter Questino"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
 
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/teacher_question_linear_layout"
-            android:layout_below="@+id/quiz_question_name_text_view"
+            android:layout_below="@+id/quiz_image_question_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioGroup
@@ -51,5 +56,5 @@
             </RadioGroup>
 
         </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

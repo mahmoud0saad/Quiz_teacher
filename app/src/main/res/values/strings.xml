@@ -12,4 +12,6 @@
     <string name="user_id_key">userId</string>
     <string name="create_lesson_teacher_id_key">teacherIdcreateLesson</string>
     <string name="intent_quiz_lesson_id_key">lessonIdStudent</string>
+    <string name="shared_preference_user_id_key">user_id_shared_preference</string>
+    <string name="intent_quiz_lesson_name_key">QuizlessonName</string>
 </resources>

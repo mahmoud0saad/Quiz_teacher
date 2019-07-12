@@ -43,7 +43,6 @@ public class CreateLessonView extends AppCompatActivity  implements CreateLesson
     private LessonQuestionAdapter mLessonQuestionAdapter;
     private int mLessonId=-1;
     private Utils.CustomLinearLayoutManager mLinearLayoutManager;
-    private int mCount=1;
     private LessonQuestionAdapter.LessonQuestionViewHolder mContextViewHolder;
     private ImageView mNextItemImageView, mBackItemImageView,mRemoveQuestionImageView,mAddQuestionImageView;
 
@@ -111,8 +110,6 @@ public class CreateLessonView extends AppCompatActivity  implements CreateLesson
             public void onClick(View v) {
                 Questions questions=new Questions();
 
-                questions.setQuestionId(mCount);
-                mCount++;
 
                 mQuestionsList.add(questions);
                 arragentest();
@@ -143,10 +140,8 @@ public class CreateLessonView extends AppCompatActivity  implements CreateLesson
         questions.setQuestionId(0);
 
 
-        questions.setTheQuestion("1");
 
 
-        mCount++;
         mQuestionsList.add(questions);
 
         mLessonQuestionAdapter=new LessonQuestionAdapter(this,mQuestionsList,mTeacherId);
@@ -172,9 +167,10 @@ public class CreateLessonView extends AppCompatActivity  implements CreateLesson
     }
 
     public void getImgaeFromGallery(LessonQuestionAdapter.LessonQuestionViewHolder context){
-        mContextViewHolder=context;
-        getImage();
-
+        if (mContextViewHolder==null) {
+            mContextViewHolder = context;
+            getImage();
+        }
     }
 
     private void getImage(){
@@ -188,23 +184,28 @@ public class CreateLessonView extends AppCompatActivity  implements CreateLesson
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==RESULT_OK&&requestCode==PIC_IMGE_REQUEST){
+        if (requestCode==PIC_IMGE_REQUEST){
+            if (resultCode==RESULT_OK) {
+                Glide.with(this)
+                        .asBitmap()
+                        .load(data.getData())
+                        .override(200, 200)
+                        .into(new CustomTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
 
-            Glide.with(this)
-                    .asBitmap()
-                    .load(data.getData())
-                    .override(200, 200)
-                    .into(new CustomTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                                mContextViewHolder.setImageBitmap(resource);
+                                mContextViewHolder = null;
 
-                          mContextViewHolder.setImageBitmap(resource);
-                        }
+                            }
 
-                        @Override
-                        public void onLoadCleared(@Nullable Drawable placeholder) {
-                        }
-                    });
+                            @Override
+                            public void onLoadCleared(@Nullable Drawable placeholder) {
+                            }
+                        });
+            }else {
+                mContextViewHolder = null;
+            }
         }
     }
 
@@ -218,6 +219,7 @@ public class CreateLessonView extends AppCompatActivity  implements CreateLesson
         Collections.sort(mQuestionsList, new Comparator<Questions>() {
             @Override
             public int compare(Questions o1, Questions o2) {
+                Log.d(TAG, "compare: the quetion id is :"+o1.getQuestionId());
                 return o1.getQuestionId()- o2.getQuestionId();
             }
         });

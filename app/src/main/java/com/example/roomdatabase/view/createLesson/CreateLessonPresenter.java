@@ -28,6 +28,7 @@ public class CreateLessonPresenter implements CreateLessonPresenterMvp{
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
+                Log.d("mano", "run: teacher id insert lesson "+teacerId);
                 Lesson lesson=new Lesson(teacerId,lessonName);
                 createLessonView.setLessonId((int) mDatabaseDao.insertLesson(lesson));
             }
@@ -39,7 +40,6 @@ public class CreateLessonPresenter implements CreateLessonPresenterMvp{
     @Override
     public void insertAllQuestion(int lessonId, List<Questions> questionsList) {
         for (Questions question:questionsList) {
-            question.setQuestionId(-1);
             question.setLessonId(String.valueOf(lessonId));
             mDatabaseDao.insertQuestion(question);
             Log.d("mano", "insertAllQuestion: "+question.getTheQuestion());

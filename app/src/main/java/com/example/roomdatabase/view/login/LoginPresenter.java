@@ -6,6 +6,7 @@ import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.roomdatabase.R;
@@ -13,6 +14,7 @@ import com.example.roomdatabase.model.Manager;
 import com.example.roomdatabase.model.database.AppDatabase;
 import com.example.roomdatabase.model.database.StudentDao;
 import com.example.roomdatabase.model.database.Users;
+import com.example.roomdatabase.model.preference.AppPreference;
 import com.example.roomdatabase.view.main.MainView;
 import com.example.roomdatabase.view.register.RegisterView;
 import com.example.roomdatabase.view.studentMain.StudentMainView;
@@ -49,6 +51,9 @@ public class LoginPresenter  implements  LoginPresenterMvp{
                         intent = new Intent(mContext, TeacherMainView.class);
                     }
                     intent.putExtra(mContext.getString(R.string.user_id_key),users.getId());
+                    AppPreference appPreference=new AppPreference(mContext);
+                    Log.d("mano ", "onChanged: login presenter the user id is  "+users.getId());
+                    appPreference.setUserId(users.getId());
                     mContext.startActivity(intent);
                     mLoginView.finishActivity();
 

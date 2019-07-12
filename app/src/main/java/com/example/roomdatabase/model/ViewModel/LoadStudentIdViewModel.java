@@ -11,7 +11,7 @@ public class LoadStudentIdViewModel extends ViewModel {
     private LiveData<Users> mLiveDataStudent;
 
     public LoadStudentIdViewModel(AppDatabase appDatabase, int studentId) {
-       mLiveDataStudent=appDatabase.studentDao().loadStudentById(studentId);
+       mLiveDataStudent=appDatabase.studentDao().getStudentById(studentId);
     }
 
     public LiveData<Users> getStudent(){

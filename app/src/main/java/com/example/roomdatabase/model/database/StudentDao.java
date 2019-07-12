@@ -17,7 +17,7 @@ public interface StudentDao {
      LiveData<List<Users>> getAllStudent();
 
     @Insert
-    void insertStudent(Users users);
+    long insertStudent(Users users);
 
     @Delete
     void deleteStudent(Users users);
@@ -26,7 +26,7 @@ public interface StudentDao {
     void updateStudent(Users users);
 
     @Query("select * from users where id=:id")
-    LiveData<Users> loadStudentById(int id);
+    LiveData<Users> getStudentById(int id);
 
 
     @Query("select * from users limit :first,:count  ")
@@ -54,13 +54,24 @@ public interface StudentDao {
     LiveData<List<Questions>> getAllQuestionForLesson(int lessonId);
 
     @Query("select * from resultAnswer where studentId=:studentId ")
-    LiveData<ResultAnswerLesson> getAllResultForStudent(int studentId);
+    LiveData<List<ResultAnswerLesson>> getAllResultForStudent(int studentId);
+
+
+    @Query("select * from resultAnswer where lessonId=:lessonId ")
+    LiveData<List<ResultAnswerLesson>> getAllResultForLesson(String lessonId);
+
+    @Query("select * from resultAnswer where studentId=:studentId and lessonId=:lessonId ")
+    LiveData<ResultAnswerLesson> getAllStudentResultForlesson(int lessonId, int studentId);
+
+    @Query("select * from users where id=:userId ")
+    LiveData<Users> getUsernameById(int userId);
 
     @Insert
     long insertLesson(Lesson lesson);
 
     @Insert
     void insertQuestion(Questions questions);
+
 
     @Insert
     void insertResultAnswerLesson(ResultAnswerLesson resultAnswerLesson);
